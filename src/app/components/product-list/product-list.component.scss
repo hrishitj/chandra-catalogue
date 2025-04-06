@@ -1,0 +1,17 @@
+@media (min-width: 992px) {
+    :host {
+        margin-left: 200px;
+        color: #1b4f58 !important;
+        font-family: "Outfit", sans-serif !important;
+    }
+}
+
+/* On small screens, take full width */
+@media (max-width: 991px) {
+    :host {
+        margin-left: 0;
+        width: 100%;
+        color: #1b4f58 !important;
+        font-family: "Outfit", sans-serif !important;
+    }
+}

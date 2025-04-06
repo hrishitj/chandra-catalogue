@@ -1,0 +1,81 @@
+/* On larger screens, add margin if sidebar is visible */
+@media (min-width: 992px) {
+    .product-list-container {
+        margin-left: 200px;
+    }
+}
+
+/* On small screens, take full width */
+@media (max-width: 991px) {
+    .product-list-container {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+.navbar-custom {
+    background-color: #1b4f58 !important;
+}
+
+.cart-button {
+    color: #c1a46d !important;
+    border: 1px solid #c1a46d !important;
+    width: 200px;
+    font-size: large;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px; /* adds space between text and icon */
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+.cart-button:hover{
+    background-color: #c1a46d !important;
+    color: #1b4f58 !important;
+    border-color: #c1a46d !important;
+    transition: all 0.2s ease;
+}
+
+.navbar-toggler {
+    border-color: #c1a46d !important;
+}
+
+.category-link {
+    font-family: "Outfit", sans-serif !important;
+    color: #1b4f58 !important;
+    background-color: transparent;
+    transition: all 0.2s ease;
+    border-radius: 4px;
+  }
+  
+  .category-link:hover {
+    cursor: pointer;
+    background-color: rgba(27, 79, 88, 0.1);
+  }
+  
+  .category-link.active-link {
+    color: #c1a46d !important;
+    background-color: #1b4f58 !important;
+    font-weight: bold;
+  }
+  
+  /* Optional: Style sidebar containers */
+  .mobile-sidebar {
+    font-family: "Outfit", sans-serif !important;
+    z-index: 1000;
+    height: 100vh;
+    width: 200px;
+    top: 0;
+    left: 0;
+  }
+  
+  .desktop-sidebar {
+    font-family: "Outfit", sans-serif !important;
+    width: 200px;
+    h5{
+        font-family: "Outfit", sans-serif !important;
+        color: #1b4f58 !important;
+    }
+  }

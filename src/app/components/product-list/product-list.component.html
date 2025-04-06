@@ -1,0 +1,45 @@
+<div class="d-flex flex-wrap gap-4 justify-content-center justify-content-lg-start container mt-4">
+    <div class="card" style="width: 300px;" *ngFor="let product of filteredProducts">
+        <img [src]="product.image" class="card-img-top" alt="{{ product.code }}"
+            style="max-height: 300px; object-fit: contain;">
+        <div class="card-body">
+            <h5 class="card-title">{{ product.code }}</h5>
+            <p>{{ product.description }}</p>
+
+            <!-- Metal checkboxes -->
+            <label class="form-label fw-bold">Metal Colors:</label>
+            <div class="form-check form-check-inline" *ngFor="let metal of ['W', 'Y', 'R']">
+                <input class="form-check-input" type="checkbox" [(ngModel)]="product.selectedMetals[metal]"
+                    [id]="product.code + '_' + metal">
+                <label class="form-check-label" [for]="product.code + '_' + metal">
+                    {{ metal }}
+                </label>
+            </div>
+
+            <!-- Karat checkboxes -->
+            <div class="mt-2">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" [(ngModel)]="product.selectedKarat['10K']"
+                        [id]="product.code + '_10k'">
+                    <label class="form-check-label" [for]="product.code + '_10k'">
+                        10K - ${{ product.prices['10K'] }}
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" [(ngModel)]="product.selectedKarat['14K']"
+                        [id]="product.code + '_14k'">
+                    <label class="form-check-label" [for]="product.code + '_14k'">
+                        14K - ${{ product.prices['14K'] }}
+                    </label>
+                </div>
+            </div>
+
+            <!-- Quantity & Button -->
+            <div class="mt-2">
+                <input type="number" min="1" [(ngModel)]="product.quantity" class="form-control" placeholder="Quantity">
+            </div>
+
+            <button class="add-to-cart btn w-100 mt-3" (click)="addToCart(product)">Add to Enquiry Cart</button>
+        </div>
+    </div>
+</div>

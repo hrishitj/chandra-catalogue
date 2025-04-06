@@ -1,0 +1,51 @@
+<div class="d-flex flex-column vh-100">
+    <!-- Navbar -->
+    <nav class="navbar-custom navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <!-- Hamburger Toggle -->
+            <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <a class="navbar-brand" [routerLink]="['/products', getCategorySlug(selectedCategory)]">
+                <img src="assets/logos/Chandra-Logo.png" alt="Logo" style="width: 200px; height: 75px;">
+            </a>
+            <!-- Cart Button -->
+            <a class="cart-button" [routerLink]="['/cart']">
+                Enquiry Cart
+                <mat-icon>shopping_cart</mat-icon>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Layout -->
+    <div class="d-flex flex-grow-1 position-relative">
+        <!-- Sidebar -->
+        <!-- Sidebar for Mobile (Hamburger) -->
+        <div class="bg-light p-3 position-absolute d-lg-none mobile-sidebar" *ngIf="showSidebar">
+            <h5>Categories</h5>
+            <ul class="nav flex-column">
+                <li class="nav-item" *ngFor="let category of categories">
+                    <a class="nav-link category-link" [ngClass]="{ 'active-link': selectedCategory === category }"
+                        (click)="selectCategory(category)">
+                        {{ category }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Sidebar for Desktop -->
+        <div class="bg-light p-3 d-none d-lg-block desktop-sidebar">
+            <h5>Categories</h5>
+            <ul class="nav flex-column">
+                <li class="nav-item" *ngFor="let category of categories">
+                    <a class="nav-link category-link" [ngClass]="{ 'active-link': selectedCategory === category }"
+                        (click)="selectCategory(category)">
+                        {{ category }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <router-outlet></router-outlet>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+button.add-to-cart.btn {
+    background-color: #1b4f58 !important;
+    color: #c1a46d !important;
+}
+
+button.add-to-cart.btn:hover {
+    background-color: #c1a46d !important;
+    color: #1b4f58 !important;
+    border-color: #c1a46d !important;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
