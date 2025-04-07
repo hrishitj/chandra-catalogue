@@ -32,7 +32,7 @@ export class CartComponent implements OnInit {
       body += `Qty: ${item.quantity}\n\n`;
     });
   
-    const mailtoLink = `mailto:hrishitj.work@gmail.com?cc=${this.email}&subject=${subject}&body=${encodeURIComponent(body)}`;
+    const mailtoLink = `mailto:hrishitjhaveri.work@gmail.com?cc=${this.email}&subject=${subject}&body=${encodeURIComponent(body)}`;
     window.location.href = mailtoLink;
 
     // Optionally clear cart
