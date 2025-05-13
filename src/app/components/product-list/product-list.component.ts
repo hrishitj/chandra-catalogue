@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, signal, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../../services/cart.service';
 import { ActivatedRoute } from '@angular/router';
@@ -7,25 +7,26 @@ import { ActivatedRoute } from '@angular/router';
 interface Product {
   code: string;
   category: string;
-  images: string[];
   description: string;
-  prices: { [key: string]: number };
-  selectedMetals: { [key: string]: boolean };
-  selectedKarat: { [key: string]: boolean };
-  quantity?: number;
+  images: string[];
   currentImageIndex?: number;
+  ctw?: number; // total carat weight
+  mw?: number;  // metal weight
+  prices: { [karat: string]: number };
+  quantities: { [key: string]: number }; // e.g., 'W_10K': 2, 'Y_14K': 1
 }
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   imports: [CommonModule, FormsModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductListComponent implements OnInit, OnChanges {
-  @Input() selectedCategory: string = '';
 
   products: Product[] = [];
-  filteredProducts: Product[] = [];
+  filteredProducts = signal<Product[]>([]);
+  public selectedCategory = signal<string>('');
 
   constructor(private cartService: CartService,
     private route: ActivatedRoute
@@ -38,11 +39,12 @@ export class ProductListComponent implements OnInit, OnChanges {
       console.log('Raw category from URL in product:', rawCategory);
       if (rawCategory) {
         // Convert slug back to title case if needed
-        this.selectedCategory = rawCategory.replace(/-/g, ' ');
+        this.selectedCategory.set(rawCategory.replace(/-/g, ' '));
         this.products = this.getProducts(); 
+        this.syncQuantitiesFromCart();
         this.filterProducts();
       } else {
-        this.filteredProducts = this.products; // Show all if no filter
+        this.filteredProducts.set(this.products); // Show all if no filter
       }
     });
   }
@@ -52,7 +54,7 @@ export class ProductListComponent implements OnInit, OnChanges {
   }
 
   filterProducts() {
-    this.filteredProducts = this.products.filter(p => p.category === this.selectedCategory);
+    this.filteredProducts.set(this.products.filter(p => p.category === this.selectedCategory()));
   }
 
   nextImage(product: any) {
@@ -82,8 +84,8 @@ export class ProductListComponent implements OnInit, OnChanges {
         images: ['assets/bracelets/B10390.PNG'],
         description: '1 CT',
         prices: { '10K': 399, '14K': 549 },
-        selectedMetals: { W: false, Y: false, R: false },
-        selectedKarat: { '10K': false, '14K': false },
+        ctw: 1,
+        quantities: {}
       },
       {
         code: 'B10048',
@@ -91,8 +93,8 @@ export class ProductListComponent implements OnInit, OnChanges {
         images: ['assets/bracelets/B10048.PNG'],
         description: '2 CT',
         prices: { '10K': 449, '14K': 599 },
-        selectedMetals: { W: false, Y: false, R: false },
-        selectedKarat: { '10K': false, '14K': false },
+        ctw: 2,
+        quantities: {}
       },
       {
         code: 'B10049',
@@ -100,8 +102,8 @@ export class ProductListComponent implements OnInit, OnChanges {
         images: ['assets/bracelets/B10049.PNG'],
         description: '3 CT',
         prices: { '10K': 499, '14K': 649 },
-        selectedMetals: { W: false, Y: false, R: false },
-        selectedKarat: { '10K': false, '14K': false },
+        ctw: 3,
+        quantities: {}
       },
       {
         code: 'B10236',
@@ -109,8 +111,8 @@ export class ProductListComponent implements OnInit, OnChanges {
         images: ['assets/bracelets/B10236.PNG'],
         description: '4 CT',
         prices: { '10K': 799, '14K': 1049 },
-        selectedMetals: { W: false, Y: false, R: false },
-        selectedKarat: { '10K': false, '14K': false },
+        ctw: 4,
+        quantities: {}
       },
       {
         code: 'B10237',
@@ -118,8 +120,8 @@ export class ProductListComponent implements OnInit, OnChanges {
         images: ['assets/bracelets/B10237.PNG'],
         description: '5 CT',
         prices: { '10K': 849, '14K': 1099 },
-        selectedMetals: { W: false, Y: false, R: false },
-        selectedKarat: { '10K': false, '14K': false },
+        ctw: 5,
+        quantities: {}
       },
       {
         code: 'B10379',
@@ -127,8 +129,8 @@ export class ProductListComponent implements OnInit, OnChanges {
         images: ['assets/bracelets/B10379.PNG'],
         description: '6 CT',
         prices: { '10K': 1149, '14K': 1449 },
-        selectedMetals: { W: false, Y: false, R: false },
-        selectedKarat: { '10K': false, '14K': false },
+        ctw: 6,
+        quantities: {}
       },
       {
         code: 'B10378',
@@ -136,8 +138,8 @@ export class ProductListComponent implements OnInit, OnChanges {
         images: ['assets/bracelets/B10378.PNG'],
         description: '7 CT',
         prices: { '10K': 1299, '14K': 1599 },
-        selectedMetals: { W: false, Y: false, R: false },
-        selectedKarat: { '10K': false, '14K': false },
+        ctw: 7,
+        quantities: {}
       },
       {
         code: 'B10381',
@@ -145,8 +147,8 @@ export class ProductListComponent implements OnInit, OnChanges {
         images: ['assets/bracelets/B10381.PNG'],
         description: '8 CT',
         prices: { '10K': 1549, '14K': 1949 },
-        selectedMetals: { W: false, Y: false, R: false },
-        selectedKarat: { '10K': false, '14K': false },
+        ctw: 8,
+        quantities: {}
       },
       {
         code: 'B10389',
@@ -154,8 +156,8 @@ export class ProductListComponent implements OnInit, OnChanges {
         images: ['assets/bracelets/B10389.PNG'],
         description: '9 CT',
         prices: { '10K': 1649, '14K': 2049 },
-        selectedMetals: { W: false, Y: false, R: false },
-        selectedKarat: { '10K': false, '14K': false },
+        ctw: 9,
+        quantities: {}
       },
       {
         code: 'B10385',
@@ -163,8 +165,8 @@ export class ProductListComponent implements OnInit, OnChanges {
         images: ['assets/bracelets/B10385.PNG'],
         description: '10 CT',
         prices: { '10K': 1799, '14K': 2199 },
-        selectedMetals: { W: false, Y: false, R: false },
-        selectedKarat: { '10K': false, '14K': false },
+        ctw: 10,
+        quantities: {}
       },
       {
         code: 'E10120',
@@ -172,8 +174,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         images: ['assets/hoops/E10120.png'],
         description: '3.36 CT Emerald',
         prices: { '10K': 849, '14K': 1099 },
-        selectedMetals: { W: false, Y: false, R: false },
-        selectedKarat: { '10K': false, '14K': false },
+        quantities: {}
       },
       {
         code: 'E10121',
@@ -181,8 +182,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         images: ['assets/hoops/E10121.png'],
         description: '3.60 CT Oval',
         prices: { '10K': 899, '14K': 1099 },
-        selectedMetals: { W: false, Y: false, R: false },
-        selectedKarat: { '10K': false, '14K': false },
+        quantities: {}
       },
       {
         code: 'E10591',
@@ -190,8 +190,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         images: ['assets/hoops/E10591.png'],
         description: '8.40 CT Emerald',
         prices: { '10K': 1549, '14K': 1799 },
-        selectedMetals: { W: false, Y: false, R: false },
-        selectedKarat: { '10K': false, '14K': false },
+        quantities: {}
       },
       {
         code: 'E10592',
@@ -199,8 +198,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         images: ['assets/hoops/E10592.png'],
         description: '9.52 CT Oval',
         prices: { '10K': 1799, '14K': 2149 },
-        selectedMetals: { W: false, Y: false, R: false },
-        selectedKarat: { '10K': false, '14K': false },
+        quantities: {}
       },
       {
         code: 'N10175',
@@ -208,8 +206,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         images: ['assets/fancyNecklaces/N10175.png'],
         description: '19.25 CT',
         prices: { '10K': 3299, '14K': 3599 },
-        selectedMetals: { W: false, Y: false, R: false },
-        selectedKarat: { '10K': false, '14K': false },
+        quantities: {}
       },
       {
         code: 'N10273',
@@ -217,8 +214,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         images: ['assets/fancyNecklaces/N10273.png'],
         description: '30.10 CT',
         prices: { '10K': 4849, '14K': 5299 },
-        selectedMetals: { W: false, Y: false, R: false },
-        selectedKarat: { '10K': false, '14K': false },
+        quantities: {}
       },
       {
         code: 'N10275',
@@ -226,8 +222,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         images: ['assets/fancyNecklaces/N10275.png'],
         description: '20.08 CT',
         prices: { '10K': 4899, '14K': 5449 },
-        selectedMetals: { W: false, Y: false, R: false },
-        selectedKarat: { '10K': false, '14K': false },
+        quantities: {}
       },
       {
         code: 'N10248',
@@ -235,8 +230,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         images: ['assets/fancyNecklaces/N10248.png'],
         description: '9.11 CT Emerald',
         prices: { '10K': 1999, '14K': 2399 },
-        selectedMetals: { W: false, Y: false, R: false },
-        selectedKarat: { '10K': false, '14K': false },
+        quantities: {}
       },
       {
         code: 'N10281',
@@ -244,8 +238,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         images: ['assets/fancyNecklaces/N10281.png'],
         description: '10.26 CT Round',
         prices: { '10K': 2049, '14K': 2499 },
-        selectedMetals: { W: false, Y: false, R: false },
-        selectedKarat: { '10K': false, '14K': false },
+        quantities: {}
       },
       {
         code: 'N10282',
@@ -253,8 +246,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         images: ['assets/fancyNecklaces/N10282.png'],
         description: '9.64 CT Asscher',
         prices: { '10K': 2249, '14K': 2649 },
-        selectedMetals: { W: false, Y: false, R: false },
-        selectedKarat: { '10K': false, '14K': false },
+        quantities: {}
       },
       {
         code: 'N10141',
@@ -262,8 +254,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         images: ['assets/roundNecklaces/N10141.jpeg'],
         description: '3 CT',
         prices: { '10K': 699, '14K': 949 },
-        selectedMetals: { W: false, Y: false, R: false },
-        selectedKarat: { '10K': false, '14K': false },
+        quantities: {}
       },
       {
         code: 'N10130',
@@ -271,8 +262,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         images: ['assets/roundNecklaces/N10130.jpeg'],
         description: '5 CT',
         prices: { '10K': 1299, '14K': 1799 },
-        selectedMetals: { W: false, Y: false, R: false },
-        selectedKarat: { '10K': false, '14K': false },
+        quantities: {}
       },
       {
         code: 'N10252',
@@ -280,25 +270,57 @@ export class ProductListComponent implements OnInit, OnChanges {
         images: ['assets/roundNecklaces/N10252.jpeg'],
         description: '7 CT',
         prices: { '10K': 1399, '14K': 1899 },
-        selectedMetals: { W: false, Y: false, R: false },
-        selectedKarat: { '10K': false, '14K': false },
+        quantities: {}
       },
     ];
   }
 
-  addToCart(product: any) {
+  syncQuantitiesFromCart() {
+    const cartItems = this.cartService.getCartItems?.() || [];
+  
+    for (const product of this.products) {
+      // Reset existing quantities
+      product.quantities = {};
+  
+      const matchedCartItem = cartItems.find(item => item.code === product.code);
+      if (matchedCartItem) {
+        for (const combo of matchedCartItem.combinations) {
+          const key = `${combo.metal}_${combo.karat}`;
+          product.quantities[key] = combo.quantity;
+        }
+      }
+    }
+  }
+
+  addToCart(product: Product) {
+    if (!product.quantities) return;
+  
+    const selectedCombinations = Object.entries(product.quantities)
+      .filter(([_, qty]) => qty && qty > 0)
+      .map(([key, quantity]) => {
+        const [metal, karat] = key.split('_');
+        return {
+          metal,
+          karat,
+          quantity,
+          price: product.prices[karat]
+        };
+      });
+  
+    if (selectedCombinations.length === 0) {
+      alert('Please enter quantity for at least one metal and karat.');
+      return;
+    }
+  
     const item = {
       code: product.code,
       image: product.images[0],
       weight: product.description,
-      metals: Object.keys(product.selectedMetals || {}).filter(k => product.selectedMetals[k]),
-      karats: Object.keys(product.selectedKarat || {}).filter(k => product.selectedKarat[k]),
-      quantity: product.quantity,
-      price: product.prices,
+      combinations: selectedCombinations, // List of selected metal-karat-qty-price
     };
-
+  
     this.cartService.addToCart(item);
     alert('Added to cart!');
-  } 
+  }
   
 }
