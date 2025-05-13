@@ -1,46 +1,63 @@
-<div class="enquiry-container">
-  <h2 class="enquiry-heading">Enquiry Cart</h2>
+<div class="container-fluid mt-4" >
+  <h2 class="mb-4">Enquiry Cart</h2>
 
-  <div *ngIf="cartItems.length === 0" class="enquiry-empty">
+  <!-- Empty State -->
+  <div *ngIf="cartItems.length === 0" class="text-center">
     <p>Your cart is empty.</p>
   </div>
 
-  <div *ngFor="let item of cartItems; let i = index" class="cart-item">
-    <div class="cart-item__content">
-      <div class="cart-item-image">
-        <!-- <img [src]="item.image" alt="{{ item.code }}" /> -->
+  <!-- Cart Items -->
+  <div *ngFor="let item of cartItems; let i = index" class="card mb-3 position-relative">
+    <!-- Remove X -->
+    <button (click)="removeFromCart(i)" type="button"
+            class="btn-close position-absolute top-0 end-0 m-2"
+            aria-label="Remove"></button>
+
+    <div class="row g-0 align-items-center w-100"> <!-- Added w-100 here -->
+      <!-- Image -->
+      <div class="col-md-3 text-center p-2">
+        <img [src]="item.image" alt="{{ item.code }}" class="img-fluid" style="max-height: 500px;" />
       </div>
 
-      <div class="cart-item__details">
-        <h5 class="cart-item__code">{{ item.code }}</h5>
-        <p class="cart-item__description"><strong>{{ item.weight }}</strong></p>
-        <p class="cart-item__metals">Metals: {{ item.combinations.join(', ') }}</p>
-        <p class="cart-item__karats">Karats: {{ item.combinations.join(', ') }}</p>
-
-        <div *ngIf="item.combinations?.length" class="cart-item__combinations">
-          <strong>Selected:</strong>
-          <ul>
-            <li *ngFor="let combo of item.combinations">
-              {{ combo.metal }} {{ combo.karat }} - Qty: {{ combo.quantity }} - Price: ${{ combo.price }} - Total: ${{ combo.price*combo.quantity }}
-            </li>
-          </ul>
+      <!-- Code + Weight -->
+      <div class="col-md-3">
+        <div class="card-body py-2">
+          <h5 class="card-title mb-1">{{ item.code }}</h5>
+          <p class="mb-0"><strong>{{ item.weight }}</strong></p>
         </div>
       </div>
 
-      <div class="cart-item__actions">
-        <p class="cart-item__total">Total: ${{ getItemTotal(item) }}</p>
-        <button (click)="removeFromCart(i)" class="cart-item__remove-button">
-          🗑 Remove
-        </button>
+      <!-- Selected Items -->
+      <div class="col-md-4">
+        <div class="card-body py-4">
+          <div *ngIf="item.combinations?.length">
+            <strong>Selected Combinations:</strong>
+            <ul class="list-unstyled mb-2">
+              <li *ngFor="let combo of item.combinations">
+                {{ combo.metal }} {{ combo.karat }} - Qty: {{ combo.quantity }} - ${{ combo.price }} = ${{ combo.price * combo.quantity }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Total -->
+      <div class="col-md-2 text-end py-4 pe-4">
+        <p class="fw-bold mb-0">Total: ${{ getItemTotal(item) }}</p>
       </div>
     </div>
   </div>
 
-  <div class="enquiry-form">
+  <!-- Contact Form -->
+  <div class="mt-4 py-4">
     <h4>Contact Details</h4>
-    <input type="text" placeholder="Your Name" [(ngModel)]="name" class="enquiry-form__input" />
-    <input type="email" placeholder="Your Email" [(ngModel)]="email" class="enquiry-form__input" />
-    <button [disabled]="!name || !email" (click)="sendEnquiry()" class="enquiry-form__submit">
+    <div class="mb-3 col-md-4">
+      <input type="text" class="form-control" placeholder="Your Name" [(ngModel)]="name" />
+    </div>
+    <div class="mb-3 col-md-4">
+      <input type="email" class="form-control" placeholder="Your Email" [(ngModel)]="email" />
+    </div>
+    <button title="Fill in your name and email to send the enquiry" [disabled]="!name || !email" (click)="sendEnquiry()" class="add-to-cart col-md-2 btn">
       Send Enquiry
     </button>
   </div>

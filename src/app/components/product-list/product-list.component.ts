@@ -276,7 +276,7 @@ export class ProductListComponent implements OnInit, OnChanges {
   }
 
   syncQuantitiesFromCart() {
-    const cartItems = this.cartService.getCartItems?.() || [];
+    const cartItems = this.cartService.getCartItems() || [];
   
     for (const product of this.products) {
       // Reset existing quantities

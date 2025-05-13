@@ -20,8 +20,6 @@ export interface CartItem {
 
 export class CartService {
   private cartItems: CartItem[] = [];
-  
-  
 
   constructor() {}
 

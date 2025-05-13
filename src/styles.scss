@@ -9,5 +9,13 @@ button.add-to-cart.btn:hover {
     color: #1b4f58 !important;
     border-color: #c1a46d !important;
 }
-html, body { height: 100%; }
+
+app-cart {
+    width: 100%;
+}
+
+html, body { 
+    height: 100%; 
+    width: 100%;
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
