@@ -11,8 +11,8 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LayoutComponent {
-  categories = ['Tennis Bracelet', 'Fancy Hoops', 'Fancy Necklaces', 'Round Necklaces'];
-  selectedCategory: string = 'Tennis Bracelet';
+  categories = ['Necklaces', 'Rings', 'Bands', 'Earrings', 'Pendants', 'Bracelets'];
+  selectedCategory: string = 'Bracelets';
   showSidebar = false;
 
   constructor(private router: Router, private route: ActivatedRoute) {}
@@ -26,7 +26,7 @@ export class LayoutComponent {
         this.selectedCategory = rawCategory.replace(/-/g, ' ');
       }
       else{
-        this.selectedCategory = 'Tennis Bracelet';
+        this.selectedCategory = 'Bracelets';
       }
     });
   }
