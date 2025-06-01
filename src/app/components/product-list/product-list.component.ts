@@ -746,7 +746,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         images: [
           'assets/bracelets/B10427.PNG'
         ],
-        ctw: 9.309999999999999,
+        ctw: 9.3,
         mw: {
           tenKt: 11.381,
           fourteenKt: 13.149
@@ -2006,7 +2006,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         images: [
           'assets/bracelets/B10049.PNG'
         ],
-        ctw: 3.0959999999999996,
+        ctw: 3,
         mw: {
           tenKt: 5.146,
           fourteenKt: 5.95
@@ -2657,7 +2657,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         images: [
           'assets/unknown/R11229.PNG'
         ],
-        ctw: 5.920963999999999,
+        ctw: 6,
         mw: {
           tenKt: 3.499,
           fourteenKt: 4.04
