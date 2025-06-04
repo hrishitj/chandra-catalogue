@@ -20,7 +20,7 @@ export class CartComponent implements OnInit {
   }
 
   sendEnquiry() {
-    const formUrl = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse'; //TODO change URL
+    const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfoq2e-8mmxDBoeD2-_omrmSkSIWM1cyZ_boOUXCy0AkEGamg/formResponse';
   
     const products = this.cartItems.map((item, index) => {
       let itemInfo = `#${index + 1} - ${item.code}\nWt: ${item.weight}\n`;
@@ -33,10 +33,9 @@ export class CartComponent implements OnInit {
     }).join('\n');
   
     const formData = new FormData();
-    //TODO replace with actual entry IDs
-    formData.append('entry.1234567890', this.name);      // replace with actual ID for "Name"
-    formData.append('entry.0987654321', this.email);     // replace with actual ID for "Email"
-    formData.append('entry.1122334455', products);       // replace with actual ID for "Products"
+    formData.append('entry.1401848244', this.name);      // replace with actual ID for "Name"
+    formData.append('entry.901778223', this.email);     // replace with actual ID for "Email"
+    formData.append('entry.1943096883', products);       // replace with actual ID for "Products"
   
     fetch(formUrl, {
       method: 'POST',

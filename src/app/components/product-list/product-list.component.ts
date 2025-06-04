@@ -37,7 +37,6 @@ export class ProductListComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const rawCategory = params.get('category');
-      console.log('Raw category from URL in product:', rawCategory);
       if (rawCategory) {
         // Convert slug back to title case if needed
         this.selectedCategory.set(rawCategory.replace(/-/g, ' '));
