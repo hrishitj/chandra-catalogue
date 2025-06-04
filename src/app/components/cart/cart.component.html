@@ -49,16 +49,49 @@
   </div>
 
   <!-- Contact Form -->
-  <div class="mt-4 py-4">
-    <h4>Contact Details</h4>
+<div class="mt-4 py-4">
+  <h4>Contact Details</h4>
+
+  <form #enquiryForm="ngForm">
     <div class="mb-3 col-md-4">
-      <input type="text" class="form-control" placeholder="Your Name" [(ngModel)]="name" />
+      <input
+        type="text"
+        name="name"
+        class="form-control"
+        placeholder="Your Name"
+        [(ngModel)]="name"
+        required
+        #nameInput="ngModel"
+      />
+      <div class="text-danger" *ngIf="nameInput.invalid && nameInput.touched">
+        Name is required.
+      </div>
     </div>
+
     <div class="mb-3 col-md-4">
-      <input type="email" class="form-control" placeholder="Your Email" [(ngModel)]="email" />
+      <input
+        type="email"
+        name="email"
+        class="form-control"
+        placeholder="Your Email"
+        [(ngModel)]="email"
+        required
+        email
+        #emailInput="ngModel"
+      />
+      <div class="text-danger" *ngIf="emailInput.invalid && emailInput.touched">
+        Enter a valid email.
+      </div>
     </div>
-    <button title="Fill in your name and email to send the enquiry" [disabled]="!name || !email" (click)="sendEnquiry()" class="add-to-cart col-md-2 btn">
+
+    <button
+      title="Fill in your name and email to send the enquiry"
+      [disabled]="enquiryForm.invalid"
+      (click)="sendEnquiry()"
+      class="add-to-cart col-md-2 btn"
+    >
       Send Enquiry
     </button>
-  </div>
+  </form>
+</div>
 </div>
