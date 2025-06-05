@@ -1100,7 +1100,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Rings',
         shape: 'Oval',
         images: [
-          'assets/rings/R10429/OV.PNG'
+          'assets/rings/R10429OV.png'
         ],
         ctw: 2.5,
         mw: {
@@ -1667,7 +1667,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Pendants',
         shape: 'Round',
         images: [
-          'assets/pendants/P10010.PNG'
+          'assets/pendants/P10010.png'
         ],
         ctw: 1,
         mw: {
@@ -1709,7 +1709,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Pendants',
         shape: 'Round',
         images: [
-          'assets/pendants/P10012.PNG'
+          'assets/pendants/P10012.jpeg'
         ],
         ctw: 3,
         mw: {
@@ -1730,7 +1730,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Pendants',
         shape: 'Round',
         images: [
-          'assets/pendants/P10559.PNG'
+          'assets/pendants/P10559.png'
         ],
         ctw: 1.25,
         mw: {
@@ -1751,7 +1751,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Pendants',
         shape: 'Round',
         images: [
-          'assets/pendants/P10499.PNG'
+          'assets/pendants/P10499.png'
         ],
         ctw: 1.177,
         mw: {
@@ -1772,7 +1772,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Pendants',
         shape: 'Round',
         images: [
-          'assets/pendants/P10272.PNG'
+          'assets/pendants/P10272.png'
         ],
         ctw: 2.2,
         mw: {
@@ -1793,7 +1793,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Pendants',
         shape: 'Round',
         images: [
-          'assets/pendants/P10273.PNG'
+          'assets/pendants/P10273.png'
         ],
         ctw: 3,
         mw: {
@@ -1814,7 +1814,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Pendants',
         shape: 'Round',
         images: [
-          'assets/pendants/P10411.PNG'
+          'assets/pendants/P10411.png'
         ],
         ctw: 2,
         mw: {
@@ -1835,7 +1835,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Pendants',
         shape: 'Round',
         images: [
-          'assets/pendants/P10410.PNG'
+          'assets/pendants/P10410.png'
         ],
         ctw: 1,
         mw: {
@@ -2234,7 +2234,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Rings',
         shape: 'Emerald',
         images: [
-          'assets/rings/R11052.PNG'
+          'assets/rings/R11052.png'
         ],
         ctw: 4.724,
         mw: {
@@ -2255,7 +2255,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Rings',
         shape: 'Oval',
         images: [
-          'assets/rings/R11053.PNG'
+          'assets/rings/R11053.png'
         ],
         ctw: 5.456,
         mw: {
@@ -2276,7 +2276,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Rings',
         shape: 'Asscher',
         images: [
-          'assets/rings/R11054.PNG'
+          'assets/rings/R11054.png'
         ],
         ctw: 13,
         mw: {
@@ -2297,7 +2297,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Rings',
         shape: 'Oval',
         images: [
-          'assets/rings/R11055.PNG'
+          'assets/rings/R11055.png'
         ],
         ctw: 7.66,
         mw: {
@@ -2316,9 +2316,9 @@ export class ProductListComponent implements OnInit, OnChanges {
         index: 98,
         code: 'R11056',
         category: 'Rings',
-        shape: 'Hm',
+        shape: 'HoneyComb',
         images: [
-          'assets/rings/R11056.PNG'
+          'assets/rings/R11056.png'
         ],
         ctw: 4.486,
         mw: {
@@ -2337,9 +2337,9 @@ export class ProductListComponent implements OnInit, OnChanges {
         index: 99,
         code: 'R11123',
         category: 'Rings',
-        shape: 'Hm',
+        shape: 'Honeycomb',
         images: [
-          'assets/rings/R11123.PNG'
+          'assets/rings/R11123.png'
         ],
         ctw: 5,
         mw: {
@@ -2358,9 +2358,9 @@ export class ProductListComponent implements OnInit, OnChanges {
         index: 100,
         code: 'R11057',
         category: 'Rings',
-        shape: 'Rad',
+        shape: 'Radiant',
         images: [
-          'assets/rings/R11057.PNG'
+          'assets/rings/R11057.png'
         ],
         ctw: 5.372,
         mw: {
@@ -2381,7 +2381,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Rings',
         shape: 'Oval',
         images: [
-          'assets/rings/R11058.PNG'
+          'assets/rings/R11058.png'
         ],
         ctw: 4.1,
         mw: {
@@ -2402,7 +2402,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Rings',
         shape: 'Emerald',
         images: [
-          'assets/rings/R11059.PNG'
+          'assets/rings/R11059.png'
         ],
         ctw: 4.718,
         mw: {
@@ -2423,7 +2423,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Rings',
         shape: 'Asscher',
         images: [
-          'assets/rings/R11062.PNG'
+          'assets/rings/R11062.png'
         ],
         ctw: 18.234,
         mw: {
@@ -2444,7 +2444,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Rings',
         shape: 'Round',
         images: [
-          'assets/rings/R11061.PNG'
+          'assets/rings/R11061.png'
         ],
         ctw: 4.242,
         mw: {
@@ -2465,7 +2465,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Rings',
         shape: 'Ecu',
         images: [
-          'assets/rings/R11072.PNG'
+          'assets/rings/R11072.png'
         ],
         ctw: 4.142,
         mw: {
@@ -2486,7 +2486,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Rings',
         shape: 'Emerald',
         images: [
-          'assets/rings/R11237.PNG'
+          'assets/rings/R11237.png'
         ],
         ctw: 8.273,
         mw: {
@@ -2507,7 +2507,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Rings',
         shape: 'Oval',
         images: [
-          'assets/rings/R11232.PNG'
+          'assets/rings/R11232.png'
         ],
         ctw: 8.2,
         mw: {
@@ -2528,7 +2528,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Rings',
         shape: 'Oval',
         images: [
-          'assets/rings/R11234.PNG'
+          'assets/rings/R11234.png'
         ],
         ctw: 6,
         mw: {
@@ -2549,7 +2549,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Rings',
         shape: 'Emerald',
         images: [
-          'assets/rings/R11240.PNG'
+          'assets/rings/R11240.png'
         ],
         ctw: 8,
         mw: {
@@ -2570,7 +2570,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Rings',
         shape: 'Ecu',
         images: [
-          'assets/rings/R11231.PNG'
+          'assets/rings/R11231.png'
         ],
         ctw: 5.85,
         mw: {
@@ -2591,7 +2591,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Rings',
         shape: 'Pear',
         images: [
-          'assets/rings/R11255.PNG'
+          'assets/rings/R11255.png'
         ],
         ctw: 6,
         mw: {
@@ -2612,7 +2612,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Rings',
         shape: 'Marquise',
         images: [
-          'assets/rings/R11230.PNG'
+          'assets/rings/R11230.png'
         ],
         ctw: 6,
         mw: {
@@ -2630,10 +2630,10 @@ export class ProductListComponent implements OnInit, OnChanges {
       {
         index: 113,
         code: 'R11253',
-        category: 'Unknown',
+        category: 'Rings',
         shape: 'Ecu',
         images: [
-          'assets/unknown/R11253.PNG'
+          'assets/rings/R11253.PNG'
         ],
         ctw: 5.630904,
         mw: {
@@ -2651,10 +2651,10 @@ export class ProductListComponent implements OnInit, OnChanges {
       {
         index: 114,
         code: 'R11229',
-        category: 'Unknown',
+        category: 'Rings',
         shape: 'Cushion',
         images: [
-          'assets/unknown/R11229.PNG'
+          'assets/rings/R11229.png'
         ],
         ctw: 6,
         mw: {
@@ -2696,7 +2696,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Bracelets',
         shape: 'Round',
         images: [
-          'assets/bracelets/B10155.PNG'
+          'assets/bracelets/B10155.png'
         ],
         ctw: 46.8,
         mw: {
