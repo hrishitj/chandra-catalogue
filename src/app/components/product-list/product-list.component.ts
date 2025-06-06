@@ -804,7 +804,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         index: 26,
         code: 'B10159',
         category: 'Bracelets',
-        shape: 'Pc',
+        shape: 'Princess',
         images: [
           'assets/bracelets/B10159.png'
         ],
@@ -1625,7 +1625,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Pendants',
         shape: 'Round',
         images: [
-          'assets/pendants/P10580.PNG'
+          'assets/pendants/P10007.png'
         ],
         ctw: 3,
         mw: {
@@ -1850,27 +1850,27 @@ export class ProductListComponent implements OnInit, OnChanges {
 
         }
       },
-      {
-        index: 76,
-        code: 'P10334',
-        category: 'Pendants',
-        shape: 'Round',
-        images: [
-          'assets/pendants/P10334.PNG'
-        ],
-        ctw: 0.597,
-        mw: {
-          tenKt: 4.025,
-          fourteenKt: 4.65
-        },
-        prices: {
-          '14K': 540.0,
-          '10K': 390.0
-        },
-        quantities: {
+      // {
+      //   index: 76,
+      //   code: 'P10334',
+      //   category: 'Pendants',
+      //   shape: 'Round',
+      //   images: [
+      //     'assets/pendants/P10334.PNG'
+      //   ],
+      //   ctw: 0.597,
+      //   mw: {
+      //     tenKt: 4.025,
+      //     fourteenKt: 4.65
+      //   },
+      //   prices: {
+      //     '14K': 540.0,
+      //     '10K': 390.0
+      //   },
+      //   quantities: {
 
-        }
-      },
+      //   }
+      // },
       {
         index: 77,
         code: 'P10412',
@@ -2738,7 +2738,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Pendants',
         shape: 'Pear',
         images: [
-          'assets/pendants/P10347.PNG'
+          'assets/pendants/P10347.png'
         ],
         ctw: 2,
         mw: {
