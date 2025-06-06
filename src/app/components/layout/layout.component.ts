@@ -11,7 +11,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LayoutComponent {
-  categories = ['Necklaces', 'Rings', 'Bands', 'Earrings', 'Pendants', 'Bracelets'];
+  categories = ['Rings', 'Bands', 'Earrings', 'Pendants', 'Bracelets', 'Necklaces'];
   selectedCategory: string = 'Bracelets';
   showSidebar = false;
 
