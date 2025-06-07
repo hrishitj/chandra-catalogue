@@ -827,7 +827,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Bracelets',
         shape: 'Emerald',
         images: [
-          'assets/bracelets/B10331.PNG'
+          'assets/bracelets/B10331.jpg'
         ],
         ctw: 8.09,
         mw: {
@@ -2717,7 +2717,7 @@ export class ProductListComponent implements OnInit, OnChanges {
         category: 'Bracelets',
         shape: 'Emerald',
         images: [
-          'assets/bracelets/B10408.PNG'
+          'assets/bracelets/B10408.jpg'
         ],
         ctw: 25.0,
         mw: {
@@ -2796,7 +2796,7 @@ export class ProductListComponent implements OnInit, OnChanges {
     const item = {
       code: product.code,
       image: product.images[0],
-      weight: product.ctw + " " + product.shape,
+      weight: product.ctw + "CT " + product.shape,
       combinations: selectedCombinations, // List of selected metal-karat-qty-price
     };
 
