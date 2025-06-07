@@ -11,7 +11,7 @@
       <h5 class="card-title text-center">{{ product.code }}</h5>
       <p class="text-center">SHAPE - {{ product.shape }}</p>
       <p class="text-center">CTW - {{ product.ctw?.toFixed(2) }} CT</p>
-      <p class="text-center">MW - 10KT - {{ product.mw?.tenKt }} GMS 14KT - {{ product.mw?.fourteenKt }} GMS</p>
+      <p class="text-center">MW - 10KT - {{ product.mw?.tenKt?.toFixed(2) }} GMS 14KT - {{ product.mw?.fourteenKt?.toFixed(2) }} GMS</p>
 
       <!-- Table Header -->
       <table class="table table-bordered text-center align-middle">
